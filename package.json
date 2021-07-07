@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "对接钉钉机器人",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tnnevol/robot-for-ding.git"
+  },
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
