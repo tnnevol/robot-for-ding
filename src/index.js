@@ -35,3 +35,5 @@ async function sendDingRobot(webhook, secret, postData) {
   const sendBody = createSend(webhook, timestamp, sign);
   return await sendBody(postData);
 }
+
+export default sendDingRobot
