@@ -1,0 +1,23 @@
+{
+  "name": "robot-for-ding",
+  "version": "1.0.0",
+  "description": "对接钉钉机器人",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "greecenew@foxmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "@babel/runtime-corejs2": "^7.7.2",
+    "axios": "^0.21.1",
+    "crypto-js": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1"
+  }
+}
