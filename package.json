@@ -1,13 +1,17 @@
 {
   "name": "robot-for-ding",
-  "version": "1.0.2",
+  "version": "2.0.2",
   "description": "对接钉钉机器人",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:tnnevol/robot-for-ding.git"
   },
   "scripts": {
+    "publish": "npm publish",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
