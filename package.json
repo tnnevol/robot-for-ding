@@ -2,7 +2,7 @@
   "name": "robot-for-ding",
   "version": "2.2.0",
   "description": "对接钉钉机器人",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:tnnevol/robot-for-ding.git"
