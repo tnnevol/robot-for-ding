@@ -12,8 +12,8 @@ npm i robot-for-ding
 const RobotDing = require('../lib')
 
 const ding = new RobotDing({
-    webhook: 'https://oapi.dingtalk.com/robot/send?access_token=b4b57dc291ded97c6ebcffefab41b6fedb3db1f3f20aa0fec574ca3aa6024eea',
-    secret: 'SECfe688ccb963c3292a96052fdd95930eed16a429ef1c6b512273cb7e8199e15aa'
+    webhook: 'webhook',
+    secret: 'secret'
 })
 
 // 文本
