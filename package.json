@@ -8,6 +8,10 @@
     "url": "git@github.com:tnnevol/robot-for-ding.git"
   },
   "scripts": {
+    "publish": "npm publish",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
