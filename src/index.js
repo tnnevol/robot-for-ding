@@ -198,6 +198,7 @@ import $axios from "axios";
       this.sendFeedCard = sendDingClothes(webhook, secret, FEEDCARD);
     }
   }
+  // 添加初始化原型
   initRobotDing(RobotDing)
   return RobotDing;
 }));
