@@ -1,8 +1,8 @@
 {
   "name": "robot-for-ding",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "description": "对接钉钉机器人",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:tnnevol/robot-for-ding.git"
@@ -15,7 +15,13 @@
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "greecenew@foxmail.com",
+  "author": {
+    "name": "tnnevol"
+  },
+  "keywords": [
+    "钉钉",
+    "钉钉自定义机器人"
+  ],
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
