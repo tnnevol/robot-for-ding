@@ -1,6 +1,6 @@
 {
   "name": "robot-for-ding",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "description": "对接钉钉机器人",
   "main": "lib/index.js",
   "repository": {
