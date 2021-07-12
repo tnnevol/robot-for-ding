@@ -1,6 +1,6 @@
-import HmacSHA256 from "crypto-js/hmac-sha256";
-import Base64 from "crypto-js/enc-base64";
-import $axios from "axios";
+const HmacSHA256 = require("crypto-js/hmac-sha256");
+const Base64 = require("crypto-js/enc-base64");
+const $axios = require("axios");
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
