@@ -1,4 +1,4 @@
-const RobotDing = require('../lib')
+const RobotDing = require('../src')
 
 const ding = new RobotDing({
     webhook: 'webhook',
