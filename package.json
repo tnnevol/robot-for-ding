@@ -1,5 +1,5 @@
 {
-  "name": "robot-for-ding",
+  "name": "@tnnevol/robot-for-ding",
   "version": "4.0.0",
   "description": "对接钉钉机器人",
   "main": "src/index.js",
@@ -7,8 +7,10 @@
     "type": "git",
     "url": "git@github.com:tnnevol/robot-for-ding.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/tnnevol"
+  },
   "scripts": {
-    "publish": "npm publish",
     "patch": "npm version patch",
     "minor": "npm version minor",
     "major": "npm version major",
