@@ -1,5 +1,5 @@
 {
-  "name": "@tnnevol/robot-for-ding",
+  "name": "robot-for-ding",
   "version": "4.0.0",
   "description": "对接钉钉机器人",
   "main": "src/index.js",
