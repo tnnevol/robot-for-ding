@@ -2,9 +2,6 @@
 
 typescript 重构版本
 
-## 版本即将停滞维护，请移步至typescript重构版本
-[robot-ding](https://www.npmjs.com/package/@tnnevol/robot-ding)
-
 ## 说明
 
 本项目是对接钉钉自定义小机器人，消息格式请[查阅文档](https://developers.dingtalk.com/document/app/custom-robot-access/title-72m-8ag-pqw), 主要将发送格式进行平铺
