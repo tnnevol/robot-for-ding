@@ -1,95 +1,148 @@
-# robot-for-ding
+# robot-ding
+
+typescript 重构版本
 
 ## 版本即将停滞维护，请移步至typescript重构版本
 [robot-ding](https://www.npmjs.com/package/@tnnevol/robot-ding)
 
 ## 说明
+
 本项目是对接钉钉自定义小机器人，消息格式请[查阅文档](https://developers.dingtalk.com/document/app/custom-robot-access/title-72m-8ag-pqw), 主要将发送格式进行平铺
+
 ## 起步
+
 ```shell
 npm i robot-for-ding
 ```
 
 ## 使用
+
 ```javascript
-const RobotDing = require('../lib')
+const RobotDing = require('../')
 
 const ding = new RobotDing({
-    webhook: 'webhook',
-    secret: 'secret'
+  webhook:
+    'https://oapi.dingtalk.com/robot/send?access_token=936b77454465039fcfb01698a59d2d00ae52f431d9cb79d8492c1fa6c83b28ce',
+  secret: 'SECad40f44b963f9e6deb8783bb5ac47f41c7ecbd1f3821dc62d123147e6a7b22c4'
 })
 
-// 文本
-ding.sendText({
-    content: '封装成功',
-    isAtAll: true
+// text
+ding.sendDing({
+  content: '从今天开始，拿起 TypeScript 做一个轮子的制造者'
+  // atUserIds: []
 })
 
-// 链接
-ding.sendLink({
-    title: '武松打虎',
-    text: '武松打虎，出自施耐庵所著《水浒传》中的第二十三回《横海郡柴进留宾 景阳冈武松打虎》，主要讲述梁山好汉武松回家探望哥哥，途中路过景阳冈。在冈下酒店喝了十八碗酒，踉跄着向冈上走去。行不多时，只见一棵树上写着：“近因景阳冈猛虎伤人，但有过往客商，应结伙成队过冈，请勿自误。”武松认为，这是酒家写来吓人的，为的是让过客住他的店，没有理它，继续往前走。太阳快落山时，武松来到一破庙前，见庙门贴了一张官府告示，武松读后，方知山上真有虎，待要回去住店，怕店家笑话，又继续向前走。由于酒力发作，便找了一块大青石，仰身躺下，刚要入睡，忽听一阵狂风呼啸，一只眼睛上翘，额头白色的老虎朝武松扑了过来，武松急忙一闪身，躲在老虎背后。老虎一纵身，武松又躲了过去。老虎急了，大吼一声，用尾巴向武松打来，武松又急忙跳开，并趁猛虎转身的那一霎间，举起哨棒，运足力气，朝虎头猛打下去。只听"咔嚓"一声，哨棒打在树枝上。老虎兽性大发，又向武松扑过来，武松扔掉半截棒，顺势骑在虎背上，左手揪住老虎头上的皮，右手猛击虎头，没多久就把老虎打得眼、嘴、鼻、耳到处流血，趴在地上不能动弹。武松怕老虎装死，举起半截哨棒又打了一阵，见那老虎确实没气了，才住手。从此武松威名大震。',
-    messageUrl: "https://baike.baidu.com/item/%E6%AD%A6%E6%9D%BE%E6%89%93%E8%99%8E/10966239?fr=aladdin",
-    picUrl: "https://bkimg.cdn.bcebos.com/pic/b7003af33a87e9507d51d32011385343fbf2b433?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg"
-})
+// link
+ding.sendDing(
+  {
+    title: '从今天开始，拿起 TypeScript 做一个轮子的制造者',
+    text:
+      '前端这些年发展非常迅速社区里涌现了一堆优秀的轮子比如Vue、React、Angular、jQuery、axios 等它们解决着不同领域下的问题。使用这些轮子能极大地帮助我们提升生产力有些人甚至基于这些轮子二次开发了一些轮子比如 element-ui、ant-design 等组件库。我们在享受这些轮子给我们带来的便利的时候有时候也需要面临一些问题某些轮子不能满足我们自己的特殊业务需求找不到合适的轮子等。因此我们不仅要会使用轮子也需要有造轮子的能力。',
+    messageUrl: 'https://zhuanlan.zhihu.com/p/63668114',
+    picUrl: 'https://pic3.zhimg.com/v2-7f0f7283248b0380a505cd22d820a9ec_1440w.jpg?source=172ae18b'
+  },
+  'link'
+)
 
 // markdown
-ding.sendMarkdown({
-    title: '武松打虎',
-    text: `### 武松打虎 \n 武松打虎，出自[施耐庵](https://baike.baidu.com/item/%E6%96%BD%E8%80%90%E5%BA%B5)所著[《水浒传》](https://baike.baidu.com/item/%E6%B0%B4%E6%B5%92%E4%BC%A0)中的第二十三回《横海郡柴进留宾 景阳冈武松打虎》，主要讲述梁山好汉武松回家探望哥哥，途中路过景阳冈。在冈下酒店喝了十八碗酒，踉跄着向冈上走去。行不多时，只见一棵树上写着：“近因景阳冈猛虎伤人，但有过往客商，应结伙成队过冈，请勿自误。”武松认为，这是酒家写来吓人的，为的是让过客住他的店，没有理它，继续往前走。太阳快落山时，武松来到一破庙前，见庙门贴了一张官府告示，武松读后，方知山上真有虎，待要回去住店，怕店家笑话，又继续向前走。由于酒力发作，便找了一块大青石，仰身躺下，刚要入睡，忽听一阵狂风呼啸，一只眼睛上翘，额头白色的老虎朝武松扑了过来，武松急忙一闪身，躲在老虎背后。老虎一纵身，武松又躲了过去。老虎急了，大吼一声，用尾巴向武松打来，武松又急忙跳开，并趁猛虎转身的那一霎间，举起哨棒，运足力气，朝虎头猛打下去。只听"咔嚓"一声，哨棒打在树枝上。老虎兽性大发，又向武松扑过来，武松扔掉半截棒，顺势骑在虎背上，左手揪住老虎头上的皮，右手猛击虎头，没多久就把老虎打得眼、嘴、鼻、耳到处流血，趴在地上不能动弹。武松怕老虎装死，举起半截哨棒又打了一阵，见那老虎确实没气了，才住手。从此武松威名大震。![武松打虎](https://bkimg.cdn.bcebos.com/pic/b7003af33a87e9507d51d32011385343fbf2b433?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg)`,
+ding.sendDing(
+  {
+    title: '从今天开始，拿起 TypeScript 做一个轮子的制造者',
+    text:
+      '## 前端 \n 前端这些年发展非常迅速社区里涌现了一堆优秀的轮子比如Vue、React、Angular、jQuery、axios 等它们解决着不同领域下的问题。使用这些轮子能极大地帮助我们提升生产力有些人甚至基于这些轮子二次开发了一些轮子比如 element-ui、ant-design 等组件库。我们在享受这些轮子给我们带来的便利的时候有时候也需要面临一些问题某些轮子不能满足我们自己的特殊业务需求找不到合适的轮子等。因此我们不仅要会使用轮子也需要有造轮子的能力。',
     isAtAll: true
-})
-// ActionCard
-ding.sendActionCard({
-    title: "武松打虎",
-    text: `### 武松打虎 \n 武松打虎，出自[施耐庵](https://baike.baidu.com/item/%E6%96%BD%E8%80%90%E5%BA%B5)所著[《水浒传》](https://baike.baidu.com/item/%E6%B0%B4%E6%B5%92%E4%BC%A0)中的第二十三回《横海郡柴进留宾 景阳冈武松打虎》，主要讲述梁山好汉武松回家探望哥哥，途中路过景阳冈。在冈下酒店喝了十八碗酒，踉跄着向冈上走去。行不多时，只见一棵树上写着：“近因景阳冈猛虎伤人，但有过往客商，应结伙成队过冈，请勿自误。”武松认为，这是酒家写来吓人的，为的是让过客住他的店，没有理它，继续往前走。太阳快落山时，武松来到一破庙前，见庙门贴了一张官府告示，武松读后，方知山上真有虎，待要回去住店，怕店家笑话，又继续向前走。由于酒力发作，便找了一块大青石，仰身躺下，刚要入睡，忽听一阵狂风呼啸，一只眼睛上翘，额头白色的老虎朝武松扑了过来，武松急忙一闪身，躲在老虎背后。老虎一纵身，武松又躲了过去。老虎急了，大吼一声，用尾巴向武松打来，武松又急忙跳开，并趁猛虎转身的那一霎间，举起哨棒，运足力气，朝虎头猛打下去。只听"咔嚓"一声，哨棒打在树枝上。老虎兽性大发，又向武松扑过来，武松扔掉半截棒，顺势骑在虎背上，左手揪住老虎头上的皮，右手猛击虎头，没多久就把老虎打得眼、嘴、鼻、耳到处流血，趴在地上不能动弹。武松怕老虎装死，举起半截哨棒又打了一阵，见那老虎确实没气了，才住手。从此武松威名大震。![武松打虎](https://bkimg.cdn.bcebos.com/pic/b7003af33a87e9507d51d32011385343fbf2b433?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg)`,
-    btnOrientation: '0',
-    singleTitle: '阅读全文',
-    singleURL: 'https://baike.baidu.com/item/%E6%AD%A6%E6%9D%BE%E6%89%93%E8%99%8E/10966239?fr=aladdin'
-})
+    // atMobiles: []
+  },
+  'markdown'
+)
 
-// FeedCard
-ding.sendFeedCard({
-    links: [
-        {
-            "title": "武松打虎",
-            "messageURL": "https://baike.baidu.com/item/%E6%AD%A6%E6%9D%BE%E6%89%93%E8%99%8E/10966239?fr=aladdin",
-            "picURL": "https://bkimg.cdn.bcebos.com/pic/b7003af33a87e9507d51d32011385343fbf2b433?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg"
-        }
+// 一个按钮的actionCard
+ding.sendDing(
+  {
+    title: '从今天开始，拿起 TypeScript 做一个轮子的制造者',
+    text:
+      '## 前端 \n 前端这些年发展非常迅速社区里涌现了一堆优秀的轮子比如Vue、React、Angular、jQuery、axios 等它们解决着不同领域下的问题。使用这些轮子能极大地帮助我们提升生产力有些人甚至基于这些轮子二次开发了一些轮子比如 element-ui、ant-design 等组件库。我们在享受这些轮子给我们带来的便利的时候有时候也需要面临一些问题某些轮子不能满足我们自己的特殊业务需求找不到合适的轮子等。因此我们不仅要会使用轮子也需要有造轮子的能力。',
+    btnOrientation: 0,
+    singleTitle: '查看详情',
+    singleURL: 'https://zhuanlan.zhihu.com/p/63668114'
+  },
+  'actionCard'
+)
+
+// 多个按钮的actionCard
+ding.sendDing(
+  {
+    title: '从今天开始，拿起 TypeScript 做一个轮子的制造者',
+    text:
+      '## 前端 \n 前端这些年发展非常迅速社区里涌现了一堆优秀的轮子比如Vue、React、Angular、jQuery、axios 等它们解决着不同领域下的问题。使用这些轮子能极大地帮助我们提升生产力有些人甚至基于这些轮子二次开发了一些轮子比如 element-ui、ant-design 等组件库。我们在享受这些轮子给我们带来的便利的时候有时候也需要面临一些问题某些轮子不能满足我们自己的特殊业务需求找不到合适的轮子等。因此我们不仅要会使用轮子也需要有造轮子的能力。',
+    btnOrientation: 0,
+    btns: [
+      {
+        title: '查看详情',
+        actionURL: 'https://zhuanlan.zhihu.com/p/63668114'
+      },
+      {
+        title: '百度一下',
+        actionURL: 'https://www.baidu.com'
+      }
     ]
-})
+  },
+  'actionCard'
+)
+
+// feedCard
+ding.sendDing(
+  {
+    links: [
+      {
+        title: '从今天开始，拿起 TypeScript 做一个轮子的制造者',
+        messageURL: 'https://zhuanlan.zhihu.com/p/63668114',
+        picURL:
+          'https://pic3.zhimg.com/v2-7f0f7283248b0380a505cd22d820a9ec_1440w.jpg?source=172ae18b'
+      },
+      {
+        title: '100个产业链全景图',
+        messageURL: 'https://zhuanlan.zhihu.com/p/99140838',
+        picURL: 'https://pic3.zhimg.com/80/v2-78ce5e9b7ead374ed62427a0445df3fa_720w.jpg'
+      }
+    ]
+  },
+  'feedCard'
+)
 ```
 
 ## api
-**sendText**
 
-参数 | 参数类型 | 默认值 | 是否必填 | 必须
------ | ----- | ----- | ----- | -----
-content|String|''|是| 消息内容。
-atMobiles|Array|[]|否| 被@人的手机号。
-atUserIds|Array|[]|否| 被@人的用户userid。
-isAtAll|Boolean|false|否| 是否@所有人。
+**text**
 
-**sendLink**
+| 参数      | 参数类型 | 默认值 | 是否必填 | 必须                 |
+| --------- | -------- | ------ | -------- | -------------------- |
+| content   | String   | ''     | 是       | 消息内容。           |
+| atMobiles | Array    | []     | 否       | 被@人的手机号。      |
+| atUserIds | Array    | []     | 否       | 被@人的用户 userid。 |
+| isAtAll   | Boolean  | false  | 否       | 是否@所有人。        |
 
-参数 | 参数类型 | 默认值 | 是否必填 | 必须
------ | ----- | ----- | ----- | -----
-title|String|''|是| 消息标题。
-text|String|''|是| 消息内容。如果太长只会部分展示。
-messageUrl|String|''|是| 点击消息跳转的URL。
-picUrl|String|''|否| 图片URL。
+**link**
 
-**sendMarkdown**
+| 参数       | 参数类型 | 默认值 | 是否必填 | 必须                             |
+| ---------- | -------- | ------ | -------- | -------------------------------- |
+| title      | String   | ''     | 是       | 消息标题。                       |
+| text       | String   | ''     | 是       | 消息内容。如果太长只会部分展示。 |
+| messageUrl | String   | ''     | 是       | 点击消息跳转的 URL。             |
+| picUrl     | String   | ''     | 否       | 图片 URL。                       |
 
-参数 | 参数类型 | 默认值 | 是否必填 | 必须
------ | ----- | ----- | ----- | -----
-title|String|''|是| 首屏会话透出的展示内容。
-text|String|''|是| markdown格式的消息。
-atMobiles|Array|[]|否| 被@人的手机号。
-atUserIds|Array|[]|否| 被@人的用户userid。
-isAtAll|Boolean|false|否| 是否@所有人。
+**markdown**
 
-目前只支持markdown语法的子集，具体支持的元素如下：
+| 参数      | 参数类型 | 默认值 | 是否必填 | 必须                     |
+| --------- | -------- | ------ | -------- | ------------------------ |
+| title     | String   | ''     | 是       | 首屏会话透出的展示内容。 |
+| text      | String   | ''     | 是       | markdown 格式的消息。    |
+| atMobiles | Array    | []     | 否       | 被@人的手机号。          |
+| atUserIds | Array    | []     | 否       | 被@人的用户 userid。     |
+| isAtAll   | Boolean  | false  | 否       | 是否@所有人。            |
+
+目前只支持 markdown 语法的子集，具体支持的元素如下：
+
 ```text
 标题
 # 一级标题
@@ -121,31 +174,40 @@ isAtAll|Boolean|false|否| 是否@所有人。
 2. item2
 ```
 
-**sendActionCard**
+**actionCard 单个按钮**
 
-参数 | 参数类型 | 默认值 | 是否必填 | 必须
------ | ----- | ----- | ----- | -----
-title|String|''|是| 首屏会话透出的展示内容。
-text|String|''|是| markdown格式的消息。
-singleTitle|String|''|是| 单个按钮的标题。
-singleURL|String|''|是| 点击singleTitle按钮触发的URL。
-btnOrientation|String|"1"|否| 0：按钮竖直排列 <br /> 1：按钮横向排列
-btns|Array|[]|否|按钮。<br />独立跳转ActionCard类型时必填
-btns[].title|String|--|否|按钮标题。<br />独立跳转ActionCard类型时必填
-btns[].actionURL|String|--|否|点击按钮触发的URL。<br />独立跳转ActionCard类型时必填
+| 参数           | 参数类型 | 默认值 | 是否必填 | 必须                                   |
+| -------------- | -------- | ------ | -------- | -------------------------------------- |
+| title          | String   | ''     | 是       | 首屏会话透出的展示内容。               |
+| text           | String   | ''     | 是       | markdown 格式的消息。                  |
+| singleTitle    | String   | ''     | 是       | 单个按钮的标题。                       |
+| singleURL      | String   | ''     | 是       | 点击 singleTitle 按钮触发的 URL。      |
+| btnOrientation | String   | "1"    | 否       | 0：按钮竖直排列 <br /> 1：按钮横向排列 |
 
+**actionCard 多个按钮**
 
-**sendFeedCard**
+| 参数             | 参数类型 | 默认值 | 是否必填 | 必须                                                     |
+| ---------------- | -------- | ------ | -------- | -------------------------------------------------------- |
+| title            | String   | ''     | 是       | 首屏会话透出的展示内容。                                 |
+| text             | String   | ''     | 是       | markdown 格式的消息。                                    |
+| btnOrientation   | String   | "1"    | 否       | 0：按钮竖直排列 <br /> 1：按钮横向排列                   |
+| btns             | Array    | []     | 否       | 按钮。<br />独立跳转 ActionCard 类型时必填               |
+| btns[].title     | String   | --     | 否       | 按钮标题。<br />独立跳转 ActionCard 类型时必填           |
+| btns[].actionURL | String   | --     | 否       | 点击按钮触发的 URL。<br />独立跳转 ActionCard 类型时必填 |
 
-参数 | 参数类型 | 默认值 | 是否必填 | 必须
------ | ----- | ----- | ----- | -----
-links|Array|[]|是| --
-links[].title|String|--|是| 单条信息文本。
-links[].messageURL|String|--|是| 点击单条信息到跳转链接。
-links[].picURL|String|--|是| 单条信息后面图片的URL。
+**feedCard**
+
+| 参数               | 参数类型 | 默认值 | 是否必填 | 必须                     |
+| ------------------ | -------- | ------ | -------- | ------------------------ |
+| links              | Array    | []     | 是       | --                       |
+| links[].title      | String   | --     | 是       | 单条信息文本。           |
+| links[].messageURL | String   | --     | 是       | 点击单条信息到跳转链接。 |
+| links[].picURL     | String   | --     | 是       | 单条信息后面图片的 URL。 |
 
 ## 常见问题
+
 当出现以下错误时，表示消息校验未通过，请查看机器人的安全设置。
+
 ```text
 // 消息内容中不包含任何关键词
 {
