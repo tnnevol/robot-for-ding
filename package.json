@@ -1,6 +1,6 @@
 {
   "name": "@tnnevol/robot-ding",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "一个对接钉钉机器人的中转站",
   "keywords": [
     "钉钉",
