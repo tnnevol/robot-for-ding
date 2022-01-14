@@ -18,7 +18,6 @@
     "url": "git@github.com:tnnevol/robot-for-ding.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/tnnevol",
     "access": "public"
   },
   "license": "MIT",
