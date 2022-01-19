@@ -69,11 +69,11 @@ export default class RobotDing implements SendDing {
           markdown: {
             title: dingMarkdownConfig.title,
             text: dingMarkdownConfig.text,
-            at: {
-              atUserIds: dingMarkdownConfig.atUserIds,
-              atMobiles: dingMarkdownConfig.atMobiles,
-              isAtAll: dingMarkdownConfig.isAtAll
-            }
+          },
+          at: {
+            atUserIds: dingMarkdownConfig.atUserIds,
+            atMobiles: dingMarkdownConfig.atMobiles,
+            isAtAll: dingMarkdownConfig.isAtAll
           }
         } as DingSendMarkdownParams
         break
