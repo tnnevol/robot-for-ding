@@ -18,7 +18,7 @@ import {
   DingSendLinkParams,
   DingSendActionCardParams,
   DingSendFeedCardParams
-} from './type'
+} from '.'
 
 function createSign(timestamp: number, secret: string): string {
   const stringToSign: string = `${timestamp}\n${secret}`
